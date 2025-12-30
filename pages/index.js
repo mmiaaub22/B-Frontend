@@ -1,5 +1,3 @@
-// pages/index.js
-import React from "react";
 import AttackPanel from "../components/AttackPanel";
 
 export default function Home() {
