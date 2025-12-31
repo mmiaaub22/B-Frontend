@@ -43,9 +43,17 @@ export default function AttackPanel() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ network }),
       });
+
       const wallet = await res.json();
+
+      if (wallet.error) {
+        alert("Backend error: " + wallet.error);
+        return;
+      }
+
       setWIF(wallet.wif);
       setAttacker(wallet.recommended_address);
+
     } catch (e) {
       alert("Generate wallet failed: " + e.message);
     }
