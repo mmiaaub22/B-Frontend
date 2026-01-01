@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
-// BACKEND base (from .env / Render)
-// Use NEXT_PUBLIC_API_BASE to expose to the browser (Next.js / CRA env var convention)
-const BACKEND = (process.env.NEXT_PUBLIC_API_BASE || "").replace(/\/$/, "");
+// AUTO-DETECT BACKEND BASE URL
+const BACKEND =
+  process.env.NEXT_PUBLIC_API_BASE?.replace(/\/$/, "") ||
+  "https://bitcoin-beast-framework-23.onrender.com"; // fallback if env missing
+
+console.log("🔌 Using backend:", BACKEND);
 
 // endpoints now use BACKEND as base; if BACKEND is empty string it will fall back to relative paths
 const endpoints = {
